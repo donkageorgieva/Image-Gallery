@@ -8,7 +8,9 @@ const useHttpRequest = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        config.baseURL + config.API_KEY + `&per_page=${config.amount}`,
+        config.baseURL +
+          config.API_KEY +
+          `&page=${config.page}&per_page=${config.amount}`,
         {
           method: config.method,
           headers: {
