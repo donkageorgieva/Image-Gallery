@@ -16,5 +16,19 @@ const theme = createTheme({
     },
   },
 });
-
+theme.components = {
+  MuiCard: {
+    styleOverrides: {
+      root: {
+        width: "30%",
+        maxWidth: "100%",
+        margin: "1rem",
+        [theme.breakpoints.down("sm")]: {
+          width: "100%",
+          margin: "0",
+        },
+      },
+    },
+  },
+};
 export default theme;

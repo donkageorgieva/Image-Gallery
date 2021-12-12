@@ -8,10 +8,7 @@ const style = {
 };
 const GalleryCard = (props) => {
   return (
-    <Card
-      sx={{ maxWidth: "100%", width: "30%", margin: "1rem" }}
-      component="article"
-    >
+    <Card component="article">
       <CardHeader
         sx={{ textAlign: "start" }}
         avatar={<Avatar src={props.avatar} alt={props.alt} />}
