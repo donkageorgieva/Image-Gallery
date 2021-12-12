@@ -46,7 +46,12 @@ const Gallery = (props) => {
   return (
     <Container
       fixed
-      sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        padding: "6rem 0rem 6rem 0rem",
+      }}
       component="main"
     >
       {cards}
