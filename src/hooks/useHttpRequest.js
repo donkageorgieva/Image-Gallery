@@ -6,11 +6,13 @@ const useHttpRequest = () => {
   const [isLoading, setIsLoading] = useState(false);
   const fetchImages = useCallback(async (config) => {
     setIsLoading(true);
+    const urlProperties =
+      config.q !== ""
+        ? `&page=${config.page}&per_page=${config.amount}&q=${config.q}`
+        : `&page=${config.page}&per_page=${config.amount}`;
     try {
       const response = await fetch(
-        config.baseURL +
-          config.API_KEY +
-          `&page=${config.page}&per_page=${config.amount}`,
+        config.baseURL + config.API_KEY + urlProperties,
         {
           method: config.method,
           headers: {

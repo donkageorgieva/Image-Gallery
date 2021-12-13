@@ -1,10 +1,16 @@
+import { PinDropSharp } from "@mui/icons-material";
 import { AppBar, Toolbar } from "@mui/material";
 import SearchInput from "../../UI/SearchInput/SearchInput";
-const Header = () => {
+const Header = (props) => {
   return (
     <AppBar position="fixed">
       <Toolbar>
-        <SearchInput label="Search" />
+        <SearchInput
+          label="Search"
+          onChange={(e) => {
+            props.searchImage(e.target.value);
+          }}
+        />
       </Toolbar>
     </AppBar>
   );

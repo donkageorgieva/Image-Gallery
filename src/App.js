@@ -7,7 +7,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header />
         <Gallery />
       </div>
     </ThemeProvider>

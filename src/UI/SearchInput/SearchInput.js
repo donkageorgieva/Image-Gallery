@@ -1,9 +1,10 @@
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
-import { InputAdornment } from "@mui/material";
+
 const SearchInput = (props) => {
   return (
     <TextField
+      onChange={props.onChange}
       label={props.label}
       variant="outlined"
       color="secondary"
