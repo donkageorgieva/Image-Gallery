@@ -1,8 +1,8 @@
 import { createTheme } from "@mui/material/styles";
-import { pink, green } from "@mui/material/colors";
-const primaryColor = pink[600];
+import { pink, deepOrange, deepPurple } from "@mui/material/colors";
+const primaryColor = deepPurple[500];
 const dangerColor = pink["A400"];
-const secondaryColor = green[200];
+const secondaryColor = deepOrange[100];
 const theme = createTheme({
   palette: {
     primary: {
@@ -10,6 +10,7 @@ const theme = createTheme({
     },
     secondary: {
       main: secondaryColor,
+      contrastText: "white",
     },
     error: {
       main: dangerColor,
@@ -30,5 +31,35 @@ theme.components = {
       },
     },
   },
+  MuiOutlinedInput: {
+    styleOverrides: {
+      root: {
+        color: secondaryColor,
+        secondary: {
+          borderColor: "white",
+        },
+      },
+    },
+  },
+  MuiInputLabel: {
+    styleOverrides: {
+      root: {
+        color: "white",
+      },
+    },
+  },
+
+  MuiAppBar: {
+    styleOverrides: {
+      root: {
+        padding: "5px 0px 5px 0px",
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        alignItems: "center",
+      },
+    },
+  },
 };
+
 export default theme;
