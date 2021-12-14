@@ -3,6 +3,7 @@ import GalleryCard from "../../UI/Card/Card";
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import useHttpRequest from "../../hooks/useHttpRequest";
+import { ImagesearchRoller } from "@mui/icons-material";
 const Gallery = (props) => {
   const { error, isLoading, fetchImages, data } = useHttpRequest();
   const [page, setPage] = useState(1);
@@ -33,7 +34,7 @@ const Gallery = (props) => {
     };
     fetchImages(config);
   }, [fetchImages, page, search]);
-
+  console.log(data);
   const cards =
     isLoading || data.hits === undefined ? (
       <h1>Loading...</h1>
@@ -47,6 +48,8 @@ const Gallery = (props) => {
           altImage={image.tags}
           tags={image.tags}
           author={image.user}
+          likes={image.likes}
+          views={image.views}
         />
       ))
     );
@@ -64,38 +67,40 @@ const Gallery = (props) => {
         component="main"
       >
         {cards}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            variant="contained"
-            color="primary"
-            disabled={page === 1}
-            onClick={changePageHandler.bind(null, "PREV")}
+        {isLoading ? null : (
+          <Box
             sx={{
-              margin: "0.5rem",
-              padding: "0.35rem 1.25rem 0.35rem 1.25rem",
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              alignItems: "center",
             }}
           >
-            Prev
-          </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={changePageHandler.bind(null, "NEXT")}
-            sx={{
-              margin: "0.5rem",
-              padding: "0.35rem 1.25rem 0.35rem 1.25rem",
-            }}
-          >
-            Next
-          </Button>
-        </Box>
+            <Button
+              variant="contained"
+              color="primary"
+              disabled={page === 1}
+              onClick={changePageHandler.bind(null, "PREV")}
+              sx={{
+                margin: "0.5rem",
+                padding: "0.35rem 1.25rem 0.35rem 1.25rem",
+              }}
+            >
+              Prev
+            </Button>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={changePageHandler.bind(null, "NEXT")}
+              sx={{
+                margin: "0.5rem",
+                padding: "0.35rem 1.25rem 0.35rem 1.25rem",
+              }}
+            >
+              Next
+            </Button>
+          </Box>
+        )}
       </Container>
     </React.Fragment>
   );

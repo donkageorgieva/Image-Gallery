@@ -16,6 +16,9 @@ const theme = createTheme({
       main: dangerColor,
     },
   },
+  typography: {
+    fontFamily: `"Work Sans","Roboto", "Helvetica", "Arial", sans-serif`,
+  },
 });
 theme.components = {
   MuiCard: {
