@@ -32,7 +32,7 @@ const Gallery = (props) => {
   const previewImageHandler = (shouldClose = false, url = "") => {
     if (!shouldClose) {
       const newImage = { ...imgPreview, imageURL: url, preview: true };
-      console.log(url);
+
       setImgPreview(newImage);
     } else {
       const resetImage = {
@@ -125,19 +125,16 @@ const Gallery = (props) => {
           </Box>
         )}
       </Container>
-      {imgPreview.preview
-        ? ReactDOM.createPortal(
-            <PreviewModal
-              preview={imgPreview.preview}
-              imageURL={imgPreview.imageURL}
-              exitPreview={() => {
-                console.log("EXIT");
-                previewImageHandler(true, "");
-              }}
-            />,
-            document.getElementById("modal")
-          )
-        : null}
+      {imgPreview.preview ? (
+        <PreviewModal
+          preview={imgPreview.preview}
+          imageURL={imgPreview.imageURL}
+          exitPreview={() => {
+            console.log("EXIT");
+            previewImageHandler(true, "");
+          }}
+        />
+      ) : null}
     </React.Fragment>
   );
 };
