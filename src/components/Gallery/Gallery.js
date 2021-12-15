@@ -1,13 +1,19 @@
+import ReactDOM from "react-dom";
 import { Button, Container, Box } from "@mui/material";
 import GalleryCard from "../../UI/Card/Card";
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import useHttpRequest from "../../hooks/useHttpRequest";
+import PreviewModal from "../../UI/PreviewModal/PreviewModal";
 import { ImagesearchRoller } from "@mui/icons-material";
 const Gallery = (props) => {
   const { error, isLoading, fetchImages, data } = useHttpRequest();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [imgPreview, setImgPreview] = useState({
+    preview: false,
+    imageURL: "",
+  });
   const changePageHandler = (identifier) => {
     let currPage = page;
     if (identifier === "NEXT") {
@@ -22,6 +28,20 @@ const Gallery = (props) => {
   const searchImageHandler = (value) => {
     const newValue = encodeURIComponent(value);
     setSearch(newValue);
+  };
+  const previewImageHandler = (shouldClose = false, url = "") => {
+    if (!shouldClose) {
+      const newImage = { ...imgPreview, imageURL: url, preview: true };
+      console.log(url);
+      setImgPreview(newImage);
+    } else {
+      const resetImage = {
+        ...imgPreview,
+        imageURL: url,
+        preview: false,
+      };
+      setImgPreview(resetImage);
+    }
   };
   useEffect(() => {
     const config = {
@@ -50,6 +70,9 @@ const Gallery = (props) => {
           author={image.user}
           likes={image.likes}
           views={image.views}
+          previewImg={() => {
+            previewImageHandler(false, image.webformatURL);
+          }}
         />
       ))
     );
@@ -102,6 +125,19 @@ const Gallery = (props) => {
           </Box>
         )}
       </Container>
+      {imgPreview.preview
+        ? ReactDOM.createPortal(
+            <PreviewModal
+              preview={imgPreview.preview}
+              imageURL={imgPreview.imageURL}
+              exitPreview={() => {
+                console.log("EXIT");
+                previewImageHandler(true, "");
+              }}
+            />,
+            document.getElementById("modal")
+          )
+        : null}
     </React.Fragment>
   );
 };
