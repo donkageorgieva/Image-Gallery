@@ -1,4 +1,3 @@
-import { PinDropSharp } from "@mui/icons-material";
 import { AppBar, Toolbar } from "@mui/material";
 import SearchInput from "../../UI/SearchInput/SearchInput";
 const Header = (props) => {

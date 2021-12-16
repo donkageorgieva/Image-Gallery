@@ -28,46 +28,44 @@ const GalleryCard = (props) => {
           }}
         />
       </CardActionArea>
-      <CardContent>
+      <CardContent
+        sx={{
+          height: "2rem",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
-            alignContent: "center",
+            justifyContent: "center",
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              alignContent: "center",
-            }}
+          <ThumbUpIcon />
+          <Typography
+            variant="body1"
+            color="text.primary"
+            sx={{ margin: "0px 0px 0px 10px" }}
           >
-            <ThumbUpIcon />
-            <Typography
-              variant="body1"
-              color="text.primary"
-              sx={{ margin: "0px 0px 0px 10px" }}
-            >
-              {props.likes}
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              alignContent: "center",
-            }}
-          >
-            <VisibilityIcon />
-            <Typography
-              variant="body1"
-              color="text.primary"
-              sx={{ margin: "0px 0px 0px 10px" }}
-            >
-              {props.views}
-            </Typography>
-          </Box>
+            {props.likes}
+          </Typography>
         </Box>
-      </CardContent>{" "}
+        <Box
+          sx={{
+            display: "flex",
+          }}
+        >
+          <VisibilityIcon />
+          <Typography
+            variant="body1"
+            color="text.primary"
+            sx={{ margin: "0px 0px 0px 10px" }}
+          >
+            {props.views}
+          </Typography>
+        </Box>
+      </CardContent>
     </Card>
   );
 };
