@@ -97,6 +97,7 @@ const Gallery = (props) => {
               justifyContent: "center",
               width: "100%",
               alignItems: "center",
+              padding: "1rem 0rem 1rem 0rem",
             }}
           >
             <Button
