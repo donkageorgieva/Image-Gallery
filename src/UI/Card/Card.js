@@ -1,13 +1,8 @@
-import { Box, Typography, CardMedia, CardContent } from "@mui/material";
+import { Box, Typography, CardContent } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { Card, Avatar, CardHeader, CardActionArea } from "@mui/material";
 
-const style = {
-  media: {
-    height: 240,
-  },
-};
 const GalleryCard = (props) => {
   return (
     <Card component="article">

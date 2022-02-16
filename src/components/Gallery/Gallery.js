@@ -1,11 +1,10 @@
-import ReactDOM from "react-dom";
 import { Button, Container, Box } from "@mui/material";
 import GalleryCard from "../../UI/Card/Card";
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import useHttpRequest from "../../hooks/useHttpRequest";
 import PreviewModal from "../../UI/PreviewModal/PreviewModal";
-import { ImagesearchRoller } from "@mui/icons-material";
+
 const Gallery = (props) => {
   const { error, isLoading, fetchImages, data } = useHttpRequest();
   const [page, setPage] = useState(1);
