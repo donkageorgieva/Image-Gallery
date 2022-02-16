@@ -6,7 +6,7 @@ import useHttpRequest from "../../hooks/useHttpRequest";
 import PreviewModal from "../../UI/PreviewModal/PreviewModal";
 
 const Gallery = (props) => {
-  const { error, isLoading, fetchImages, data } = useHttpRequest();
+  const { isLoading, fetchImages, data } = useHttpRequest();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [imgPreview, setImgPreview] = useState({
