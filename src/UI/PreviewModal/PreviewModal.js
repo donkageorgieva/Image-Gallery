@@ -13,7 +13,6 @@ const PreviewModal = (props) => {
       open={props.preview}
       onBackdropClick={() => {
         props.exitPreview();
-        console.log("BACKDROP");
       }}
     >
       <Box
