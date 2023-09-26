@@ -18,7 +18,6 @@ const Gallery = (props) => {
     if (identifier === "NEXT") {
       currPage += 1;
       setPage(currPage);
-      console.log("next");
     } else if (identifier === "PREV") {
       currPage -= 1;
       setPage(currPage);
@@ -53,7 +52,7 @@ const Gallery = (props) => {
     };
     fetchImages(config);
   }, [fetchImages, page, search]);
-  console.log(data);
+
   const cards =
     isLoading || data.hits === undefined ? (
       <h1>Loading...</h1>
@@ -130,7 +129,6 @@ const Gallery = (props) => {
           preview={imgPreview.preview}
           imageURL={imgPreview.imageURL}
           exitPreview={() => {
-            console.log("EXIT");
             previewImageHandler(true, "");
           }}
         />
